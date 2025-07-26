@@ -3,27 +3,26 @@ name: workflow 1
 on: push
 
 jobs:
-  foaad:
-    needs: foaad2
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Welcome 
-        run: |
-          ls -ltra
-          chmod +x .github/workflows/script.sh
-          sh .github/workflows/script.sh
+    foaad2:
+        runs-on: ubuntu-latest
+        steps:
+         - name: Checkout
+           uses: actions/checkout@v4
           
+         - name: Show README
+           run: |
+              ls -ltrah
+              cat README.md
 
-     foaad2:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-          
-      - name: Show README
-        run: |
-          ls -ltrah
-          cat README.md
+    foaad:
+       needs: foaad2
+       runs-on: ubuntu-latest
+       steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+
+        - name: Welcome 
+          run: |
+           ls -ltra
+           chmod +x .github/workflows/script.sh
+           sh .github/workflows/script.sh
