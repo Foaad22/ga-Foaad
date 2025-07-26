@@ -4,6 +4,7 @@ on: push
 
 jobs:
   foaad:
+    needs: foaad2
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -11,14 +12,18 @@ jobs:
 
       - name: Welcome 
         run: |
-          echo "Hello world"
-          sudo apt update -y
-          sudo apt install cowsay -y
-          cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> dragon.txt
-          cat dragon.txt
+          ls -ltra
+          chmod +x .github/workflows/script.sh
+          sh .github/workflows/script.sh
+          
+
+     foaad2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
           
       - name: Show README
         run: |
           ls -ltrah
           cat README.md
-
