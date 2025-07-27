@@ -1,8 +1,8 @@
 name: Push to Azure container Registry
 
 
-on:
-  workflow_dispatch:  
+on: push
+    
 
 env:
     image_name: nginx-Fouad
